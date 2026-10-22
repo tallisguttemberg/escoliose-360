@@ -69,21 +69,61 @@
           <h2>Observe a pessoa de costas: um ombro parece mais alto que o outro?</h2>
           
           <div class="illustration-container">
-            <!-- SVG Ilustrando Desnível de Ombros -->
-            <svg viewBox="0 0 200 180" class="illustration">
-              <!-- Body silhouette -->
-              <path d="M40,160 C50,110 60,60 80,55 C100,50 110,65 120,65 C130,65 140,48 160,50 C180,52 190,110 200,160" fill="none" stroke="var(--text-muted)" stroke-width="3" stroke-linecap="round" />
-              <!-- Asymmetry line (dotted) showing high left shoulder, lower right -->
-              <line x1="75" y1="52" x2="165" y2="48" stroke="var(--danger)" stroke-width="2" stroke-dasharray="4 4" id="shoulder-line" />
-              <!-- Highlights for high/low shoulders -->
-              <circle cx="80" cy="55" r="6" fill="var(--danger)" />
-              <circle cx="160" cy="50" r="6" fill="var(--primary)" />
-              <!-- Reference lines -->
-              <line x1="20" y1="160" x2="180" y2="160" stroke="var(--border)" stroke-width="2" />
-              <!-- Neck and head -->
-              <path d="M110,60 C110,40 120,40 120,40 C120,40 130,40 130,60" fill="none" stroke="var(--text-muted)" stroke-width="3" />
-              <circle cx="120" cy="30" r="15" fill="none" stroke="var(--text-muted)" stroke-width="3" />
-            </svg>
+            <!-- FIGURAS:ombros:INICIO -->
+            <figure class="figure-panel">
+              <div class="figure-canvas">
+                <svg class="illustration illustration--ombros" viewBox="0 0 160 230" role="img" aria-label="Ombros alinhados — vista posterior">
+                <title>Ombros alinhados — vista posterior</title>
+                <desc>Silhueta vista de costas com os dois ombros na mesma altura, marcados por linha de referencia tracejada.</desc>
+                <g class="fig-ground">
+                <line x1="16" y1="219" x2="144" y2="219"/>
+                </g>
+                <path class="fig-body" d="M 80 7 C 91 7, 99 15, 99 24 C 99 33, 92 41, 88 41 L 88 50 C 101 53, 112 58, 116 66 C 118 73, 113 80, 110 88 C 112 99, 110 112, 107 122 C 105 131, 107 139, 111 146 C 114 150, 116 155, 116 162 L 117 200 C 117 210, 114 215, 108 215 L 101 215 C 98 215, 97 211, 97 206 L 96 180 C 96 168, 90 160, 85 157 L 80 155 C 75 157, 70 160, 64 168 L 64 180 C 63 206, 63 211, 62 215 L 59 215 C 52 215, 46 215, 43 210 L 43 200 C 44 162, 44 155, 46 150 C 49 146, 53 139, 55 131 C 53 122, 50 112, 48 99 C 50 88, 47 80, 42 73 C 44 66, 48 58, 59 53 L 72 50 C 72 41, 68 41, 61 33 C 61 24, 61 15, 69 7 L 80 7 Z"/>
+                <g class="fig-limb">
+                <path d="M 114 68 C 122 88, 124 112, 120 138"/>
+                <path d="M 46 68 C 38 88, 36 112, 40 138"/>
+                </g>
+                <line class="fig-guide" x1="28" y1="57" x2="132" y2="57"/>
+                <circle class="fig-marker" cx="110" cy="57" r="5.5"/>
+                <circle class="fig-marker" cx="50" cy="57" r="5.5"/>
+                <text class="fig-text" x="80" y="44" text-anchor="middle">ombros nivelados</text>
+                <path class="fig-spine" d="M 80 50 C 80 50, 80 61.56, 80 61.56 C 80 61.56, 80 73.11, 80 73.11 C 80 73.11, 80 84.67, 80 84.67 C 80 84.67, 80 96.22, 80 96.22 C 80 96.22, 80 107.78, 80 107.78 C 80 107.78, 80 119.33, 80 119.33 C 80 119.33, 80 130.89, 80 130.89 C 80 130.89, 80 142.44, 80 142.44 C 80 142.44, 80 154, 80 154"/>
+                </svg>
+              </div>
+              <figcaption class="figure-cap">Ombros nivelados</figcaption>
+            </figure>
+            <figure class="figure-panel figure-panel--alert">
+              <div class="figure-canvas">
+                <svg class="illustration illustration--ombros" viewBox="0 0 160 230" role="img" aria-label="Ombros em niveis diferentes — vista posterior">
+                <title>Ombros em niveis diferentes — vista posterior</title>
+                <desc>Silhueta vista de costas com um ombro mais alto que o outro, marcado por linha de referencia tracejada.</desc>
+                <g class="fig-ground">
+                <line x1="16" y1="219" x2="144" y2="219"/>
+                </g>
+                <path class="fig-body" d="M 80 7 C 91 7, 99 15, 99 24 C 95.91 32.2, 86.16 40.11, 82.18 40.5 L 80.08 49.36 C 93.39 50.29, 105.04 53.51, 110.24 60.79 C 113.65 67.74, 110.32 76.13, 108.74 85.23 C 111.89 97.22, 110.12 111.69, 107 122 C 105 131, 107 139, 111 146 C 114 150, 116 155, 116 162 L 117 200 C 117 210, 114 215, 108 215 L 101 215 C 98 215, 97 211, 97 206 L 96 180 C 96 168, 90 160, 85 157 L 80 155 C 75 157, 70 160, 64 168 L 64 180 C 63 206, 63 211, 62 215 L 59 215 C 52 215, 46 215, 43 210 L 43 200 C 44 162, 44 155, 46 150 C 49 146, 53 139, 55 131 C 53 122, 49.88 111.69, 48.11 97.22 C 51.26 85.23, 49.68 76.13, 46.35 67.74 C 49.76 60.79, 54.96 53.51, 66.61 50.29 L 79.92 49.36 C 77.82 40.5, 73.84 40.11, 64.09 32.2 C 61 24, 61 15, 69 7 L 80 7 Z"/>
+                <g class="fig-limb">
+                <path d="M 108.58 63.08 C 120.68 84.1, 124.12 111.54, 120 138"/>
+                <path d="M 41.41 73.71 C 37.06 92.01, 36.13 112.46, 40 138"/>
+                </g>
+                <line class="fig-guide" x1="28" y1="62.22" x2="132" y2="62.22"/>
+                <circle class="fig-marker fig-marker--alert" cx="102.9" cy="52.84" r="5.5"/>
+                <circle class="fig-marker" cx="43.64" cy="62.22" r="5.5"/>
+                <text class="fig-text fig-text--alert" x="102.9" y="39.84" text-anchor="middle">ombro alto</text>
+                <text class="fig-text" x="43.64" y="78.22" text-anchor="middle">ombro baixo</text>
+                <line class="fig-measure" x1="80" y1="52.84" x2="80" y2="62.22"/>
+                <line class="fig-measure" x1="76" y1="52.84" x2="84" y2="52.84"/>
+                <line class="fig-measure" x1="76" y1="62.22" x2="84" y2="62.22"/>
+                <path class="fig-spine" d="M 80 50 C 80.51 50, 80.51 61.56, 81.03 61.56 C 81.48 61.56, 81.48 73.11, 81.93 73.11 C 82.26 73.11, 82.26 84.67, 82.6 84.67 C 82.78 84.67, 82.78 96.22, 82.95 96.22 C 82.95 96.22, 82.95 107.78, 82.95 107.78 C 82.78 107.78, 82.78 119.33, 82.6 119.33 C 82.26 119.33, 82.26 130.89, 81.93 130.89 C 81.48 130.89, 81.48 142.44, 81.03 142.44 C 80.51 142.44, 80.51 154, 80 154"/>
+                </svg>
+              </div>
+              <figcaption class="figure-cap">Ombro mais alto</figcaption>
+            </figure>
+            <!-- FIGURAS:ombros:FIM -->
+          </div>
+
+          <div class="figure-legend">
+            <span class="legend-item"><i class="legend-swatch legend-swatch--guide" aria-hidden="true"></i> Linha de referência</span>
+            <span class="legend-item"><i class="legend-swatch legend-swatch--alert" aria-hidden="true"></i> Sinal de alerta</span>
           </div>
 
           <div class="options-grid">
@@ -106,16 +146,57 @@
           <h2>Uma das escápulas (pás das costas) parece mais saltada ou mais alta?</h2>
           
           <div class="illustration-container">
-            <svg viewBox="0 0 200 180" class="illustration">
-              <path d="M40,160 C50,110 60,60 80,55 C100,50 110,60 120,60 C130,60 140,50 160,55 C180,60 190,110 200,160" fill="none" stroke="var(--text-muted)" stroke-width="3" />
-              <circle cx="120" cy="30" r="15" fill="none" stroke="var(--text-muted)" stroke-width="3" />
-              <!-- Left scapula (normal) -->
-              <path d="M80,80 L95,85 L85,105 Z" fill="none" stroke="var(--primary)" stroke-width="2" />
-              <!-- Right scapula (prominent/asymmetric) -->
-              <path d="M135,75 L155,83 L140,108 Z" fill="none" stroke="var(--danger)" stroke-width="3" />
-              <!-- Accent arrows or lines -->
-              <circle cx="145" cy="88" r="6" fill="var(--danger)" />
-            </svg>
+            <!-- FIGURAS:escapulas:INICIO -->
+            <figure class="figure-panel">
+              <div class="figure-canvas">
+                <svg class="illustration illustration--escapulas" viewBox="0 0 160 230" role="img" aria-label="Escapulas simetricas — vista posterior">
+                <title>Escapulas simetricas — vista posterior</title>
+                <desc>As duas escapulas aparecem na mesma altura e com a mesma projecao.</desc>
+                <g class="fig-ground">
+                <line x1="16" y1="219" x2="144" y2="219"/>
+                </g>
+                <path class="fig-body" d="M 80 7 C 91 7, 99 15, 99 24 C 99 33, 92 41, 88 41 L 88 50 C 101 53, 112 58, 116 66 C 118 73, 113 80, 110 88 C 112 99, 110 112, 107 122 C 105 131, 107 139, 111 146 C 114 150, 116 155, 116 162 L 117 200 C 117 210, 114 215, 108 215 L 101 215 C 98 215, 97 211, 97 206 L 96 180 C 96 168, 90 160, 85 157 L 80 155 C 75 157, 70 160, 64 168 L 64 180 C 63 206, 63 211, 62 215 L 59 215 C 52 215, 46 215, 43 210 L 43 200 C 44 162, 44 155, 46 150 C 49 146, 53 139, 55 131 C 53 122, 50 112, 48 99 C 50 88, 47 80, 42 73 C 44 66, 48 58, 59 53 L 72 50 C 72 41, 68 41, 61 33 C 61 24, 61 15, 69 7 L 80 7 Z"/>
+                <g class="fig-limb">
+                <path d="M 114 68 C 122 88, 124 112, 120 138"/>
+                <path d="M 46 68 C 38 88, 36 112, 40 138"/>
+                </g>
+                <path class="fig-scapula" d="M 58 71 L 74 76 L 66 97 Z"/>
+                <path class="fig-scapula" d="M 102 71 L 86 76 L 94 97 Z"/>
+                <text class="fig-text" x="80" y="44" text-anchor="middle">escápulas simétricas</text>
+                <path class="fig-spine" d="M 80 50 C 80 50, 80 61.56, 80 61.56 C 80 61.56, 80 73.11, 80 73.11 C 80 73.11, 80 84.67, 80 84.67 C 80 84.67, 80 96.22, 80 96.22 C 80 96.22, 80 107.78, 80 107.78 C 80 107.78, 80 119.33, 80 119.33 C 80 119.33, 80 130.89, 80 130.89 C 80 130.89, 80 142.44, 80 142.44 C 80 142.44, 80 154, 80 154"/>
+                </svg>
+              </div>
+              <figcaption class="figure-cap">Escápulas simétricas</figcaption>
+            </figure>
+            <figure class="figure-panel figure-panel--alert">
+              <div class="figure-canvas">
+                <svg class="illustration illustration--escapulas" viewBox="0 0 160 230" role="img" aria-label="Escapula saliente de um lado — vista posterior">
+                <title>Escapula saliente de um lado — vista posterior</title>
+                <desc>Uma das escapulas aparece mais saliente e mais alta que a outra.</desc>
+                <g class="fig-ground">
+                <line x1="16" y1="219" x2="144" y2="219"/>
+                </g>
+                <path class="fig-body" d="M 80.03 7 C 91.03 7, 99.06 15, 99.14 24 C 97.91 32.63, 89.89 40.53, 85.9 40.71 L 85.3 49.56 C 98.57 51.65, 110.1 55.87, 115.05 63.57 C 118.04 70.58, 114.09 78.24, 111.93 86.75 C 114.41 98.21, 112.01 111.86, 108.42 122 C 105.97 131, 107.63 139, 111.4 146 C 114.31 150, 116.21 155, 116.12 162 L 117 200 C 117 210, 114 215, 108 215 L 101 215 C 98 215, 97 211, 97 206 L 96.02 180 C 96.07 168, 90.14 160, 85.18 157 L 80.21 155 C 74.82 157, 69.86 160, 63.93 168 L 63.98 180 C 63 206, 63 211, 62 215 L 59 215 C 52 215, 46 215, 43 210 L 43 200 C 43.88 162, 43.79 155, 45.69 150 C 48.6 146, 52.37 139, 54.03 131 C 51.58 122, 47.99 111.86, 45.59 98.21 C 48.07 86.75, 45.91 78.24, 41.96 70.58 C 44.95 63.57, 49.9 55.87, 61.43 51.65 L 74.7 49.56 C 74.1 40.71, 70.11 40.53, 62.09 32.63 C 60.86 24, 60.94 15, 68.97 7 L 79.97 7 Z"/>
+                <g class="fig-limb">
+                <path d="M 113.31 65.71 C 123.91 86.25, 126.01 111.8, 120.67 138"/>
+                <path d="M 45.72 70.45 C 40.03 89.77, 37.99 112.2, 40.67 138"/>
+                </g>
+                <path class="fig-scapula" d="M 58.05 72.57 L 74.71 76.41 L 68.38 97.39 Z"/>
+                <path class="fig-scapula fig-scapula--alert" d="M 97.51 61.16 L 76.87 69.4 L 90.39 97.27 Z"/>
+                <circle class="fig-marker fig-marker--alert" cx="97.38" cy="81.2" r="5.0"/>
+                <text class="fig-text fig-text--alert" x="112" y="67.2" text-anchor="start">escápula</text>
+                <text class="fig-text fig-text--alert" x="112" y="78.2" text-anchor="start">saliente</text>
+                <path class="fig-spine" d="M 80.83 50 C 81.8 50, 81.8 61.56, 82.77 61.56 C 83.67 61.56, 83.67 73.11, 84.57 73.11 C 85.23 73.11, 85.23 84.67, 85.88 84.67 C 86.15 84.67, 86.15 96.22, 86.41 96.22 C 86.25 96.22, 86.25 107.78, 86.08 107.78 C 85.56 107.78, 85.56 119.33, 85.03 119.33 C 84.29 119.33, 84.29 130.89, 83.54 130.89 C 82.71 130.89, 82.71 142.44, 81.88 142.44 C 81.05 142.44, 81.05 154, 80.23 154"/>
+                </svg>
+              </div>
+              <figcaption class="figure-cap">Escápula saliente</figcaption>
+            </figure>
+            <!-- FIGURAS:escapulas:FIM -->
+          </div>
+
+          <div class="figure-legend">
+            <span class="legend-item"><i class="legend-swatch legend-swatch--guide" aria-hidden="true"></i> Linha de referência</span>
+            <span class="legend-item"><i class="legend-swatch legend-swatch--alert" aria-hidden="true"></i> Sinal de alerta</span>
           </div>
 
           <div class="options-grid">
@@ -138,20 +219,55 @@
           <h2>O espaço entre o braço e a cintura é mais fundo ou cavado de um lado?</h2>
           
           <div class="illustration-container">
-            <svg viewBox="0 0 200 180" class="illustration">
-              <!-- Left arm & straight body side -->
-              <path d="M50,60 L50,110 C50,130 55,160 55,160" fill="none" stroke="var(--text-muted)" stroke-width="3" />
-              <!-- Asymmetrical body shape -->
-              <!-- Left waist (straightish) -->
-              <path d="M80,60 C78,90 77,110 75,160" fill="none" stroke="var(--text-muted)" stroke-width="3" />
-              <!-- Right waist (deep curve/indentation) -->
-              <path d="M120,60 C125,100 145,115 125,160" fill="none" stroke="var(--danger)" stroke-width="4" stroke-linecap="round" />
-              <!-- Right arm -->
-              <path d="M150,60 L152,110 L155,160" fill="none" stroke="var(--text-muted)" stroke-width="3" />
-              <!-- Indentation highlight indicator -->
-              <path d="M130,105 L143,105" stroke="var(--danger)" stroke-width="3" stroke-linecap="round" />
-              <polygon points="130,105 135,101 135,109" fill="var(--danger)" />
-            </svg>
+            <!-- FIGURAS:cintura:INICIO -->
+            <figure class="figure-panel">
+              <div class="figure-canvas">
+                <svg class="illustration illustration--cintura" viewBox="0 0 160 230" role="img" aria-label="Cintura simetrica — vista posterior">
+                <title>Cintura simetrica — vista posterior</title>
+                <desc>O vao entre o braco e a cintura tem a mesma profundidade dos dois lados.</desc>
+                <g class="fig-ground">
+                <line x1="16" y1="219" x2="144" y2="219"/>
+                </g>
+                <path class="fig-body" d="M 80 7 C 91 7, 99 15, 99 24 C 99 33, 92 41, 88 41 L 88 50 C 101 53, 112 58, 116 66 C 118 73, 113 80, 110 88 C 112 99, 110 112, 107 122 C 105 131, 107 139, 111 146 C 114 150, 116 155, 116 162 L 117 200 C 117 210, 114 215, 108 215 L 101 215 C 98 215, 97 211, 97 206 L 96 180 C 96 168, 90 160, 85 157 L 80 155 C 75 157, 70 160, 64 168 L 64 180 C 63 206, 63 211, 62 215 L 59 215 C 52 215, 46 215, 43 210 L 43 200 C 44 162, 44 155, 46 150 C 49 146, 53 139, 55 131 C 53 122, 50 112, 48 99 C 50 88, 47 80, 42 73 C 44 66, 48 58, 59 53 L 72 50 C 72 41, 68 41, 61 33 C 61 24, 61 15, 69 7 L 80 7 Z"/>
+                <g class="fig-limb">
+                <path d="M 114 68 C 122 88, 124 112, 120 138"/>
+                <path d="M 46 68 C 38 88, 36 112, 40 138"/>
+                </g>
+                <line class="fig-guide" x1="45" y1="124" x2="117" y2="124"/>
+                <path class="fig-spine" d="M 80 50 C 80 50, 80 61.56, 80 61.56 C 80 61.56, 80 73.11, 80 73.11 C 80 73.11, 80 84.67, 80 84.67 C 80 84.67, 80 96.22, 80 96.22 C 80 96.22, 80 107.78, 80 107.78 C 80 107.78, 80 119.33, 80 119.33 C 80 119.33, 80 130.89, 80 130.89 C 80 130.89, 80 142.44, 80 142.44 C 80 142.44, 80 154, 80 154"/>
+                <text class="fig-text" x="80" y="44" text-anchor="middle">cintura simétrica</text>
+                </svg>
+              </div>
+              <figcaption class="figure-cap">Cintura simétrica</figcaption>
+            </figure>
+            <figure class="figure-panel figure-panel--alert">
+              <div class="figure-canvas">
+                <svg class="illustration illustration--cintura" viewBox="0 0 160 230" role="img" aria-label="Cintura assimetrica — vista posterior">
+                <title>Cintura assimetrica — vista posterior</title>
+                <desc>O vao entre o braco e a cintura e mais fundo de um lado, formando um triangulo.</desc>
+                <g class="fig-ground">
+                <line x1="16" y1="219" x2="144" y2="219"/>
+                </g>
+                <path class="fig-body" d="M 80.03 7 C 91.03 7, 99.07 15, 99.17 24 C 98.31 32.72, 90.64 40.64, 86.65 40.77 L 86.35 49.65 C 99.61 51.97, 111.12 56.38, 116.04 64.16 C 118.99 71.18, 115.1 78.67, 113.41 87.06 C 117.79 98.4, 119.36 111.9, 117.65 122 C 114.43 131, 113.84 139, 115.37 146 C 117.15 150, 117.95 155, 116.87 162 L 117 200 C 117 210, 114 215, 108 215 L 101 215 C 98 215, 97 211, 97 206 L 96.06 180 C 96.39 168, 91.12 160, 86.57 157 L 81.95 155 C 73.43 157, 68.88 160, 63.61 168 L 63.94 180 C 63 206, 63 211, 62 215 L 59 215 C 52 215, 46 215, 43 210 L 43 200 C 43.13 162, 42.05 155, 42.85 150 C 44.63 146, 46.16 139, 45.57 131 C 42.35 122, 40.64 111.9, 42.21 98.4 C 46.59 87.06, 44.9 78.67, 41.01 71.18 C 43.96 64.16, 48.88 56.38, 60.39 51.97 L 73.65 49.65 C 73.35 40.77, 69.36 40.64, 61.69 32.72 C 60.83 24, 60.93 15, 68.97 7 L 79.97 7 Z"/>
+                <g class="fig-limb">
+                <path d="M 114.29 66.26 C 125.35 86.69, 133.35 111.85, 127.2 138"/>
+                <path d="M 46.52 69.82 C 39.51 89.33, 31.32 112.15, 34.4 138"/>
+                </g>
+                <line class="fig-guide" x1="37.58" y1="124" x2="127.58" y2="124"/>
+                <path class="fig-triangle" d="M 129.58 106 L 119.58 124 L 129.58 142"/>
+                <text class="fig-text fig-text--alert" x="103.58" y="122" text-anchor="end">triângulo</text>
+                <text class="fig-text fig-text--alert" x="103.58" y="132" text-anchor="end">de talhe</text>
+                <path class="fig-spine" d="M 81 50 C 82.95 50, 82.95 61.56, 84.89 61.56 C 86.11 61.56, 86.11 73.11, 87.32 73.11 C 87.28 73.11, 87.28 84.67, 87.23 84.67 C 85.95 84.67, 85.95 96.22, 84.68 96.22 C 82.77 96.22, 82.77 107.78, 80.86 107.78 C 79.2 107.78, 79.2 119.33, 77.55 119.33 C 76.9 119.33, 76.9 130.89, 76.24 130.89 C 76.82 130.89, 76.82 142.44, 77.4 142.44 C 78.83 142.44, 78.83 154, 80.27 154"/>
+                </svg>
+              </div>
+              <figcaption class="figure-cap">Cintura assimétrica</figcaption>
+            </figure>
+            <!-- FIGURAS:cintura:FIM -->
+          </div>
+
+          <div class="figure-legend">
+            <span class="legend-item"><i class="legend-swatch legend-swatch--guide" aria-hidden="true"></i> Linha de referência</span>
+            <span class="legend-item"><i class="legend-swatch legend-swatch--alert" aria-hidden="true"></i> Sinal de alerta</span>
           </div>
 
           <div class="options-grid">
@@ -174,17 +290,59 @@
           <h2>Ao inclinar o tronco para frente, você vê alguma elevação (giba) de um lado das costas?</h2>
           
           <div class="illustration-container">
-            <svg viewBox="0 0 200 180" class="illustration">
-              <!-- Bending silhouette -->
-              <!-- Back curve with hump -->
-              <path d="M30,140 C50,110 80,75 105,75 C120,75 140,88 160,110" fill="none" stroke="var(--text-muted)" stroke-width="3" />
-              <!-- Hump contour (Gibosidade) -->
-              <path d="M80,70 C105,60 125,75 135,80" fill="none" stroke="var(--danger)" stroke-width="4" />
-              <circle cx="108" cy="67" r="6" fill="var(--danger)" />
-              <text x="110" y="55" fill="var(--danger)" font-size="10" font-weight="bold" text-anchor="middle">Giba (Hump)</text>
-              <!-- Bending head -->
-              <circle cx="170" cy="125" r="12" fill="none" stroke="var(--text-muted)" stroke-width="3" />
-            </svg>
+            <!-- FIGURAS:adams:INICIO -->
+            <figure class="figure-panel">
+              <div class="figure-canvas">
+                <svg class="illustration illustration--adams" viewBox="0 84 160 142" role="img" aria-label="Costas simetricas no teste de Adams">
+                <title>Costas simetricas no teste de Adams</title>
+                <desc>Com o tronco fletido para frente, os dois lados das costas ficam na mesma altura.</desc>
+                <g class="fig-ground">
+                <line x1="16" y1="219" x2="144" y2="219"/>
+                </g>
+                <g class="fig-limb">
+                <path d="M 50 178 C 46 190 43 202 42 210"/>
+                <path d="M 110 178 C 114 190 117 202 118 210"/>
+                </g>
+                <path class="fig-body fig-limb-solid" d="M 34 210 L 50 208 L 51 215 L 35 215 Z"/>
+                <path class="fig-body fig-limb-solid" d="M 110 208 L 126 210 L 125 215 L 109 215 Z"/>
+                <path class="fig-body" d="M 20 159.25 C 23.75 159.25, 23.75 151.62, 27.5 151.62 C 31.25 151.62, 31.25 143.28, 35 143.28 C 38.75 143.28, 38.75 134.65, 42.5 134.65 C 46.25 134.65, 46.25 126.31, 50 126.31 C 53.75 126.31, 53.75 118.9, 57.5 118.9 C 61.25 118.9, 61.25 113.05, 65 113.05 C 68.75 113.05, 68.75 109.29, 72.5 109.29 C 76.25 109.29, 76.25 108, 80 108 C 83.75 108, 83.75 109.29, 87.5 109.29 C 91.25 109.29, 91.25 113.05, 95 113.05 C 98.75 113.05, 98.75 118.9, 102.5 118.9 C 106.25 118.9, 106.25 126.31, 110 126.31 C 113.75 126.31, 113.75 134.65, 117.5 134.65 C 121.25 134.65, 121.25 143.28, 125 143.28 C 128.75 143.28, 128.75 151.62, 132.5 151.62 C 136.25 151.62, 136.25 159.25, 140 159.25 C 138 168, 132 178, 126 186 L 34 186 C 28 178, 22 168, 20 159.25 Z"/>
+                <path class="fig-spine" d="M 80 108 L 80 113.5 L 80 119 L 80 124.5 L 80 130 L 80 135.5 L 80 141 L 80 146.5 L 80 152 L 80 157.5 L 80 163 L 80 168.5 L 80 174"/>
+                <line class="fig-guide" x1="18" y1="108" x2="142" y2="108"/>
+                <text class="fig-text" x="80" y="98" text-anchor="middle">costas simétricas</text>
+                </svg>
+              </div>
+              <figcaption class="figure-cap">Costas simétricas</figcaption>
+            </figure>
+            <figure class="figure-panel figure-panel--alert">
+              <div class="figure-canvas">
+                <svg class="illustration illustration--adams" viewBox="0 84 160 142" role="img" aria-label="Elevacao (gibosidade) de um lado no teste de Adams">
+                <title>Elevacao (gibosidade) de um lado no teste de Adams</title>
+                <desc>Com o tronco fletido para frente, um dos lados das costas se eleva formando uma giba.</desc>
+                <g class="fig-ground">
+                <line x1="16" y1="219" x2="144" y2="219"/>
+                </g>
+                <g class="fig-limb">
+                <path d="M 50 178 C 46 190 43 202 42 210"/>
+                <path d="M 110 178 C 114 190 117 202 118 210"/>
+                </g>
+                <path class="fig-body fig-limb-solid" d="M 34 210 L 50 208 L 51 215 L 35 215 Z"/>
+                <path class="fig-body fig-limb-solid" d="M 110 208 L 126 210 L 125 215 L 109 215 Z"/>
+                <path class="fig-body" d="M 20 161.31 C 23.75 161.31, 23.75 154.27, 27.5 154.27 C 31.25 154.27, 31.25 146.56, 35 146.56 C 38.75 146.56, 38.75 138.6, 42.5 138.6 C 46.25 138.6, 46.25 130.9, 50 130.9 C 53.75 130.9, 53.75 124.06, 57.5 124.06 C 61.25 124.06, 61.25 118.66, 65 118.66 C 68.75 118.66, 68.75 114.27, 72.5 114.27 C 76.25 114.27, 76.25 110.33, 80 110.33 C 83.75 110.33, 83.75 102.22, 87.5 102.22 C 91.25 102.22, 91.25 99.15, 95 99.15 C 98.75 99.15, 98.75 102.96, 102.5 102.96 C 106.25 102.96, 106.25 111.28, 110 111.28 C 113.75 111.28, 113.75 122.99, 117.5 122.99 C 121.25 122.99, 121.25 135.84, 125 135.84 C 128.75 135.84, 128.75 147.72, 132.5 147.72 C 136.25 147.72, 136.25 157.56, 140 157.56 C 138 168, 132 178, 126 186 L 34 186 C 28 178, 22 168, 20 161.31 Z"/>
+                <path class="fig-spine" d="M 80 108 L 81.04 113.5 L 82 119 L 82.83 124.5 L 83.46 130 L 83.86 135.5 L 84 141 L 83.86 146.5 L 83.46 152 L 82.83 157.5 L 82 163 L 81.04 168.5 L 80 174"/>
+                <line class="fig-guide" x1="18" y1="110.33" x2="142" y2="110.33"/>
+                <circle class="fig-marker fig-marker--alert" cx="92" cy="98.81" r="6.0"/>
+                <text class="fig-text fig-text--alert" x="96" y="88.81" text-anchor="middle">gibosidade</text>
+                <text class="fig-text fig-text--alert" x="16" y="100" text-anchor="start">assimetria</text>
+                </svg>
+              </div>
+              <figcaption class="figure-cap">Giba dorsal</figcaption>
+            </figure>
+            <!-- FIGURAS:adams:FIM -->
+          </div>
+
+          <div class="figure-legend">
+            <span class="legend-item"><i class="legend-swatch legend-swatch--guide" aria-hidden="true"></i> Linha de referência</span>
+            <span class="legend-item"><i class="legend-swatch legend-swatch--alert" aria-hidden="true"></i> Sinal de alerta</span>
           </div>
 
           <div class="options-grid options-vertical">

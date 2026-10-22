@@ -251,6 +251,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  min-width: 0;
 }
 
 .text-center {
@@ -364,23 +365,199 @@ h3 {
   color: var(--warning);
 }
 
-/* --- Ilustrações SVG --- */
+/* --- Ilustrações SVG (par Normal vs Alterado) --- */
 .illustration-container {
   background: var(--bg-elevated);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 20px;
+  padding: 16px 14px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.figure-panel {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 6px 8px;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  background: hsla(220, 25%, 10%, 0.45);
+  min-width: 0;
+}
+
+.figure-panel--alert {
+  border-color: hsla(4, 90%, 58%, 0.28);
+  background: hsla(4, 90%, 58%, 0.06);
+}
+
+.figure-canvas {
+  width: 100%;
+  min-width: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 160px;
 }
 
+.figure-cap {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.figure-panel--alert .figure-cap {
+  color: var(--danger);
+}
+
+/* --- Anatomia da figura --- */
 .illustration {
+  display: block;
   width: 100%;
-  max-width: 200px;
+  max-width: 170px;
   height: auto;
   overflow: visible;
+}
+
+.fig-body {
+  fill: hsla(210, 30%, 72%, 0.1);
+  stroke: var(--text-muted);
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+.fig-limb {
+  fill: none;
+  stroke: var(--text-muted);
+  stroke-width: 11;
+  stroke-linecap: round;
+}
+
+.fig-limb-solid {
+  fill: hsla(210, 30%, 72%, 0.1);
+  stroke: var(--text-muted);
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+.fig-spine {
+  fill: none;
+  stroke: var(--primary);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  opacity: 0.75;
+  stroke-dasharray: 5 4;
+  animation: figFade 0.7s ease-out both;
+}
+
+.fig-guide {
+  stroke: var(--text-muted);
+  stroke-width: 1.2;
+  stroke-dasharray: 3 4;
+  opacity: 0.7;
+}
+
+.fig-scapula {
+  fill: hsla(210, 95%, 55%, 0.12);
+  stroke: var(--primary);
+  stroke-width: 1.8;
+  stroke-linejoin: round;
+}
+
+.fig-scapula--alert {
+  fill: hsla(4, 90%, 58%, 0.18);
+  stroke: var(--danger);
+  stroke-width: 2.4;
+}
+
+.fig-triangle {
+  fill: hsla(4, 90%, 58%, 0.16);
+  stroke: var(--danger);
+  stroke-width: 1.8;
+  stroke-linejoin: round;
+}
+
+.fig-measure {
+  stroke: var(--danger);
+  stroke-width: 1.4;
+  stroke-dasharray: 2 2;
+  opacity: 0.9;
+}
+
+.fig-marker {
+  fill: var(--primary);
+  stroke: var(--bg-elevated);
+  stroke-width: 1.5;
+}
+
+.fig-marker--alert {
+  fill: var(--danger);
+  animation: figPulse 2s ease-in-out infinite;
+}
+
+.fig-ground line {
+  stroke: var(--border-light);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+.fig-text {
+  fill: var(--text-secondary);
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.fig-text--alert {
+  fill: var(--danger);
+  font-weight: 600;
+}
+
+@keyframes figFade {
+  from { opacity: 0; }
+  to { opacity: 0.75; }
+}
+
+@keyframes figPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
+}
+
+/* --- Legenda das figuras --- */
+.figure-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  justify-content: center;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-swatch {
+  width: 14px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--primary);
+}
+
+.legend-swatch--alert {
+  background: var(--danger);
+}
+
+.legend-swatch--guide {
+  background: repeating-linear-gradient(90deg, var(--text-muted) 0 3px, transparent 3px 6px);
 }
 
 /* --- Botões de Opção --- */
@@ -706,6 +883,17 @@ h3 {
 }
 
 /* --- Responsividade Mobile-First --- */
+@media (max-width: 480px) {
+  /* Em telas estreitas os dois paineis empilham para manter os rotulos legiveis */
+  .illustration-container {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .illustration {
+    max-width: 150px;
+  }
+}
+
 @media (max-width: 400px) {
   body {
     padding: 12px 10px 48px;
@@ -725,6 +913,18 @@ h3 {
 
   .option-desc {
     display: none;
+  }
+}
+
+/* --- Respeito a preferência de movimento reduzido --- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
