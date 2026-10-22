@@ -415,85 +415,106 @@ def fig_cintura(altered):
 
 
 def fig_adams(altered):
-    """Teste de Adams — tronco fletido para frente (vista posterior das costas)."""
+    """Teste de Adams — tronco fletido para frente (vista posterior das costas).
+
+    O dorso e um arco com a crista no centro. A linha de referencia fica
+    SEMPRE na altura da crista do lado esquerdo, nos dois casos, para que a
+    comparacao seja direta: no caso alterado o lado direito ultrapassa essa
+    linha e a area excedente (a gibosidade) fica preenchida.
+    """
     label = ("Elevacao (gibosidade) de um lado no teste de Adams" if altered
              else "Costas simetricas no teste de Adams")
-    desc = ("Com o tronco fletido para frente, um dos lados das costas se eleva formando uma giba." if altered
-            else "Com o tronco fletido para frente, os dois lados das costas ficam na mesma altura.")
+    desc = ("Com o tronco fletido para frente, um dos lados das costas ultrapassa a linha de referencia, formando uma giba." if altered
+            else "Com o tronco fletido para frente, os dois lados das costas ficam na mesma altura da linha de referencia.")
 
-    hip_y = 186.0
-    h_left = 72.0 if altered else 78.0
-    h_right = 78.0
-    hump = 16.0 if altered else 0.0
+    base_y = 186.0
+    peak_x = 80.0
+    half_w = 66.0
+    height = 80.0
+    bump = 34.0 if altered else 0.0
 
-    def smoothstep(t):
-        t = clamp(t, 0.0, 1.0)
-        return t * t * (3 - 2 * t)
+    def arch(x):
+        u = (x - peak_x) / half_w
+        if abs(u) >= 1.0:
+            return 0.0
+        return math.sqrt(1.0 - u * u)
 
-    def top_y(x):
-        blend = smoothstep((x - 66.0) / 26.0)
-        height = h_left * (1 - blend) + h_right * blend
-        y = hip_y - height * math.exp(-(((x - 80.0) / 58.0) ** 2))
-        if hump:
-            gate = smoothstep((x - 78.0) / 14.0)
-            y -= hump * gate * math.exp(-(((x - 104.0) / 24.0) ** 2))
-        return y
+    def gate(x):
+        """Janela da saliencia: comeca depois da crista e termina em zero."""
+        if x <= 84.0 or x >= 140.0:
+            return 0.0
+        return math.sin(math.pi * (x - 84.0) / 56.0) ** 2
 
-    # Contorno superior do dorso (domo), amostrado e suavizado.
-    samples = []
-    for i in range(17):
-        x = 20.0 + (140.0 - 20.0) * i / 16
-        samples.append((x, top_y(x)))
+    def crest_y(x):
+        return base_y - (height * arch(x) + bump * gate(x))
 
-    d = f"M {f(samples[0][0])} {f(samples[0][1])}"
-    for i in range(1, len(samples)):
-        prev, cur = samples[i - 1], samples[i]
+    xs = [14.0 + (146.0 - 14.0) * i / 32 for i in range(33)]
+    pts = [(x, crest_y(x)) for x in xs]
+
+    d = f"M {f(pts[0][0])} {f(pts[0][1])}"
+    for i in range(1, len(pts)):
+        prev, cur = pts[i - 1], pts[i]
         cx = (prev[0] + cur[0]) / 2
         d += f" C {f(cx)} {f(prev[1])}, {f(cx)} {f(cur[1])}, {f(cur[0])} {f(cur[1])}"
-    d += f" C 138 168, 132 178, 126 186 L 34 186 C 28 178, 22 168, {f(samples[0][0])} {f(samples[0][1])} Z"
+    d += " C 132 199, 28 199, 14 186 Z"
 
-    # Linha da coluna (goteira central do dorso).
+    ref_y = base_y - height          # nivel da crista do lado esquerdo
+    # Ultimo x em que o dorso ainda esta ACIMA da linha de referencia.
+    above = [x for x in xs if x > peak_x and crest_y(x) < ref_y]
+    cross_x = max(above) if above else peak_x
+
+    hump_pts = [(x, crest_y(x)) for x in xs if peak_x <= x <= cross_x]
+    hump_d = ""
+    if len(hump_pts) > 1:
+        hump_d = f"M {f(peak_x)} {f(ref_y)}"
+        for (x, y) in hump_pts:
+            hump_d += f" L {f(x)} {f(y)}"
+        hump_d += f" L {f(cross_x)} {f(ref_y)} Z"
+
+    peak_hump_x = 112.0
+    peak_hump_y = crest_y(peak_hump_x)
+
     spine_pts = []
     for i in range(13):
         t = i / 12
-        y = 108 + (hip_y - 12 - 108) * t
-        x = 80.0 + (4.0 if altered else 0.0) * math.sin(math.pi * t)
+        y = 118 + (base_y - 14 - 118) * t
+        x = peak_x + (7.0 if altered else 0.0) * math.sin(math.pi * t)
         spine_pts.append((x, y))
     spine_d = "M " + " L ".join(f"{f(x)} {f(y)}" for (x, y) in spine_pts)
 
-    # Picos de cada lado do dorso.
-    left_peak_y = min(top_y(x) for x in (20 + 60 * i / 40 for i in range(41)))
-    right_peak_y = min(top_y(x) for x in (80 + 60 * i / 40 for i in range(41)))
-
     out = [svg_open(label, desc, "illustration illustration--adams",
-                    viewbox="0 84 160 142")]
-    out.append(ground())
+                    viewbox="0 50 160 176")]
 
-    # Pernas (traçosGrossos) e pes.
+    # Pernas e pes.
     out.append('<g class="fig-limb">\n'
-               '<path d="M 50 178 C 46 190 43 202 42 210"/>\n'
-               '<path d="M 110 178 C 114 190 117 202 118 210"/>\n'
+               '<path d="M 52 190 C 49 197 46 203 45 210"/>\n'
+               '<path d="M 108 190 C 111 197 114 203 115 210"/>\n'
                '</g>\n')
-    out.append(path_el("M 34 210 L 50 208 L 51 215 L 35 215 Z", "fig-body fig-limb-solid"))
-    out.append(path_el("M 110 208 L 126 210 L 125 215 L 109 215 Z", "fig-body fig-limb-solid"))
+    out.append(path_el("M 35 210 L 51 208 L 52 216 L 36 216 Z", "fig-body fig-limb-solid"))
+    out.append(path_el("M 109 208 L 125 210 L 124 216 L 108 216 Z", "fig-body fig-limb-solid"))
 
-    # Dorso.
+    # Dorsal.
     out.append(f'<path class="fig-body" d="{d}"/>\n')
     out.append(f'<path class="fig-spine" d="{spine_d}"/>\n')
 
     if altered:
-        # Linha de referencia na altura do lado mais baixo (esquerdo).
-        out.append(line(18, left_peak_y, 142, left_peak_y, "fig-guide"))
-        # Ponto mais elevado do lado direito.
-        bx = max((x for x in (80 + 60 * i / 60 for i in range(61))),
-                 key=lambda x: left_peak_y - top_y(x))
-        by = top_y(bx)
-        out.append(circle(bx, by, 6.0, "fig-marker fig-marker--alert"))
-        out.append(text(bx + 4, by - 10, "gibosidade", "fig-text fig-text--alert"))
-        out.append(text(16, 100, "assimetria", "fig-text fig-text--alert", "start"))
+        if hump_d:
+            out.append(path_el(hump_d, "fig-hump"))
+        out.append(line(6, ref_y, 154, ref_y, "fig-guide"))
+        # Medida da elevacao, fora do corpo.
+        out.append(line(151, ref_y, 151, peak_hump_y, "fig-measure fig-measure--bright"))
+        out.append(line(147, ref_y, 155, ref_y, "fig-measure fig-measure--bright"))
+        out.append(line(147, peak_hump_y, 155, peak_hump_y, "fig-measure fig-measure--bright"))
+        out.append(circle(peak_hump_x, peak_hump_y + 1, 6.0, "fig-marker fig-marker--alert"))
+        out.append(text(peak_hump_x, peak_hump_y - 22, "gibosidade", "fig-text fig-text--alert"))
+        out.append(text(peak_hump_x, peak_hump_y - 11, "um lado mais alto", "fig-text fig-text--alert"))
+        # Seta do rotulo ate a crista.
+        out.append(path_el(f"M {f(peak_hump_x)} {f(peak_hump_y - 8)} "
+                           f"L {f(peak_hump_x)} {f(peak_hump_y - 3)}", "fig-arrow"))
+        out.append(text(10, ref_y - 8, "referência", "fig-text", "start"))
     else:
-        out.append(line(18, left_peak_y, 142, left_peak_y, "fig-guide"))
-        out.append(text(80, 98, "costas simétricas", "fig-text"))
+        out.append(line(6, ref_y, 154, ref_y, "fig-guide"))
+        out.append(text(peak_x, ref_y - 14, "costas simétricas", "fig-text"))
 
     out.append("</svg>\n")
     return "".join(out)
